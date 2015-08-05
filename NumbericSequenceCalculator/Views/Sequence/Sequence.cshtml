@@ -1,0 +1,68 @@
+﻿@model  NumbericSequenceCalculator.Models.NumbericSequence
+@{
+    ViewBag.Title = "Numberic Sequence Calculator";
+}
+<h4>Numberic Sequence Calculator</h4>
+<br/>
+<br />
+@using (Html.BeginForm("Sequence", "Sequence", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.CurrentNumber, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CurrentNumber, new { @class = "form-control" })
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <br />
+        <br />
+        <p>
+            <input type="submit" name="Sequence" value="Sequence" />
+            <input type="submit" name="OddSequence" value="Odd Sequence" />
+            <input type="submit" name="EvenSequence" value="Even Sequence" />
+            <input type="submit" name="CEZSequence" value="CEZ Sequence" />
+            <input type="submit" name="FibonacciSequence" value="Fibonacci Sequence" />
+        </p>
+    </div>
+}
+<div>
+    <ul>
+        @if (Model != null && (Model.SequenceResult.Count()>0))
+        {
+            foreach (var s in Model.SequenceResult)
+            {
+                @s<text>,</text>
+            }
+        }
+        
+    </ul>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@*<form action="" method="post">
+    <p>
+        <label for="inputNumberValue">Please input number:</label>
+        <input type="text" name="inputNumberValue" />
+    </p>
+    <p>
+        <input type="submit" name="Sequence" value="Sequence" />
+        <input type="submit" name="OddSequence" value="Odd Sequence" />
+        <input type="submit" name="EvenSequence" value="Even Sequence" />
+        <input type="submit" name="CEZSequence" value="CEZ Sequence" />
+        <input type="submit" name="FibonacciSequence" value="Fibonacci Sequence" />
+    </p>
+    
+    <h3>result</h3>
+    <ul>
+       
+        @foreach (var s in Model.SequenceResult)
+        {
+            @s<text>,</text>
+        }
+    </ul>
+</form>*@
+
